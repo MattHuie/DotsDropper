@@ -10,6 +10,9 @@ import SpriteKit
 
 class MenuScene: SKScene {
 
+    let titleLabel = SKLabelNode(text: "Falling Dots")
+    let playLabel = SKLabelNode(text: "Tap to Play")
+    
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
         addMenuUI()
@@ -17,7 +20,7 @@ class MenuScene: SKScene {
     }
     
     func addMenuUI() {
-        let titleLabel = SKLabelNode(text: "Falling Dots")
+        
         titleLabel.fontName = "MarkerFelt-Wide"
         titleLabel.fontSize = 50.0
         titleLabel.fontColor = .white
@@ -25,7 +28,6 @@ class MenuScene: SKScene {
         addChild(titleLabel)
         
         
-        let playLabel = SKLabelNode(text: "Tap to Play")
         playLabel.fontName = "MarkerFelt-Thin"
         playLabel.fontSize = 40.0
         playLabel.fontColor = .white
@@ -42,7 +44,15 @@ class MenuScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let gameScene = GameScene(size: view!.bounds.size)
-        view!.presentScene(gameScene)
+        for touch in touches {
+            let location = touch.location(in: self)
+            if playLabel.contains(location) {
+                let gameScene = GameScene(size: view!.bounds.size)
+                view!.presentScene(gameScene)
+
+                
+            }
+        }
+        
     }
 }

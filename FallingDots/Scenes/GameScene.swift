@@ -17,15 +17,22 @@ enum PlayColors {
     ]
 }
 
-enum SwitchState: Int {
+enum SwitchStateFoward: Int {
     case blue, green, yellow, red
+}
+
+enum SwitchStateBackward: Int {
+    case red, yellow, green, blue
 }
 
 class GameScene: SKScene {
     
     var colorSwitch: SKSpriteNode!
     var currentColorIndex: Int?
-    var switchState = SwitchState.blue
+    var startingAngle: CGFloat?
+    var startingTime: TimeInterval?
+    var switchStateFoward = SwitchStateFoward.blue
+    var switchStateBackward = SwitchStateBackward.red
     
     override func didMove(to view: SKView) {
         layoutScene()
@@ -35,8 +42,8 @@ class GameScene: SKScene {
     func layoutScene() {
         backgroundColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
         spawnBallOne()
-        //spawnBallTwo()
-        //spawnBallThree()
+//        spawnBallTwo()
+//        spawnBallThree()
         colorWheel()
 
     }
@@ -98,31 +105,113 @@ class GameScene: SKScene {
         //spawnBallThree()
     }
     
+    
     func colorWheel() {
-        colorSwitch = SKSpriteNode(imageNamed: "ColoredCircle")
-        colorSwitch.size = CGSize(width: frame.size.width/3.5, height: frame.size.width/3.5)
-        colorSwitch.position = CGPoint(x: frame.midX, y: frame.minY +
-            colorSwitch.size.height)
-        colorSwitch.zPosition = ZPositions.colorSwitch
-        colorSwitch.physicsBody = SKPhysicsBody(circleOfRadius: colorSwitch.size.width/2)
-        colorSwitch.physicsBody?.categoryBitMask = PhysicsCategories.switchCategory
-        colorSwitch.physicsBody?.isDynamic = false
-        addChild(colorSwitch)
+        
+        let wheel = SKSpriteNode(imageNamed: "ColoredCircle")
+        wheel.name = "wheel"
+        // wheel.setScale(0.5)
+        wheel.size = CGSize(width: frame.size.width/3.5, height: frame.size.width/3.5)
+        wheel.position = CGPoint(x: frame.midX, y: frame.minY + wheel.size.height)
+        wheel.zPosition = ZPositions.colorSwitch
+        wheel.physicsBody = SKPhysicsBody(circleOfRadius: wheel.size.width/2)
+        wheel.physicsBody?.categoryBitMask = PhysicsCategories.switchCategory
+
+
+        // Change this property as needed (increase it to slow faster)
+        wheel.physicsBody!.angularDamping = 5.0
+        wheel.physicsBody?.pinned = true
+        wheel.physicsBody?.affectedByGravity = false
+        addChild(wheel)
+        
     }
    
     func turnWheel() {
-        if let newState = SwitchState(rawValue: switchState.rawValue + 1) {
-            switchState = newState
-        } else {
-            switchState = .blue
-        }
         
-        colorSwitch.run(SKAction.rotate(byAngle: .pi/2, duration: 0.25))
+//        switch newState {
+//        case SwitchState(rawValue: switchState.rawValue + 1):
+//            switchState =
+//        case SwitchState(rawValue: switchState.rawValue - 1):
+//
+//        default:
+//            switchState = .blue
+//        }
+        
+        
+        
+
+        if let newState = SwitchStateFoward(rawValue: switchStateFoward.rawValue + 1) {
+            switchStateFoward = newState
+        } else {
+            switchStateFoward = .blue
+        }
+
+        // colorSwitch.run(SKAction.rotate(byAngle: .pi/2, duration: 0.25))
+        print(switchStateFoward)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        turnWheel()
+        
+        for touch in touches {
+            let location = touch.location(in:self)
+            let node = atPoint(location)
+            if node.name == "wheel" {
+                let dx = location.x - node.position.x
+                let dy = location.y - node.position.y
+                // Store angle and current time
+                startingAngle = atan2(dy, dx)
+                startingTime = touch.timestamp
+                node.physicsBody?.angularVelocity = 0
+
+            }
+        }
+        
     }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches{
+            let location = touch.location(in:self)
+            let node = atPoint(location)
+            if node.name == "wheel" {
+                let dx = location.x - node.position.x
+                let dy = location.y - node.position.y
+                
+                let angle = atan2(dy, dx)
+                // Calculate angular velocity; handle wrap at pi/-pi
+                var deltaAngle = angle - startingAngle!
+                if abs(deltaAngle) > CGFloat.pi {
+                    if (deltaAngle > 0) {
+                        deltaAngle = deltaAngle - CGFloat.pi * 2
+                    }
+                    else {
+                        deltaAngle = deltaAngle + CGFloat.pi * 2
+                        
+                        
+                    }
+                }
+                let dt = CGFloat(touch.timestamp - startingTime!)
+                let velocity = deltaAngle / dt
+                
+                node.physicsBody?.angularVelocity = velocity
+                
+                // Update angle and time
+                startingAngle = angle
+                startingTime = touch.timestamp
+
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        turnWheel()
+
+      
+
+        
+        startingAngle = nil
+        startingTime = nil
+    }
+
     
     func gameOver() {
         let menuScene = MenuScene(size: view!.bounds.size)
@@ -138,7 +227,7 @@ extension GameScene: SKPhysicsContactDelegate {
         if contactMask == PhysicsCategories.ballCategory | PhysicsCategories.switchCategory {
             // print("There was Contact!")
             if let ball = contact.bodyA.node?.name == "ball" ? contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as? SKSpriteNode {
-                if currentColorIndex == switchState.rawValue {
+                if currentColorIndex == switchStateFoward.rawValue | switchStateBackward.rawValue {
                     // run(SKAction.playSoundFileNamed("", waitForCompletion: false)) // add soundfile above info.plist
                     
                     ball.run(SKAction.fadeIn(withDuration: 0.25), completion: {
