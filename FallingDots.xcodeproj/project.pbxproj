@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0901CBEB22305A4500CD508E /* HiScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901CBEA22305A4500CD508E /* HiScoreScene.swift */; };
+		0901CBED22305A5300CD508E /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901CBEC22305A5300CD508E /* TutorialScene.swift */; };
 		090568CD22129506005B4E92 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090568CC22129506005B4E92 /* MenuScene.swift */; };
 		098D286B220CE41C00931318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D286A220CE41C00931318 /* AppDelegate.swift */; };
 		098D2871220CE41C00931318 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D2870220CE41C00931318 /* GameScene.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0901CBEA22305A4500CD508E /* HiScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiScoreScene.swift; sourceTree = "<group>"; };
+		0901CBEC22305A5300CD508E /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		090568CC22129506005B4E92 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		098D2867220CE41C00931318 /* FallingDots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingDots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		098D286A220CE41C00931318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +50,8 @@
 			children = (
 				090568CC22129506005B4E92 /* MenuScene.swift */,
 				098D2870220CE41C00931318 /* GameScene.swift */,
+				0901CBEA22305A4500CD508E /* HiScoreScene.swift */,
+				0901CBEC22305A5300CD508E /* TutorialScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -179,7 +185,9 @@
 				098D2871220CE41C00931318 /* GameScene.swift in Sources */,
 				090568CD22129506005B4E92 /* MenuScene.swift in Sources */,
 				098D2873220CE41C00931318 /* GameViewController.swift in Sources */,
+				0901CBED22305A5300CD508E /* TutorialScene.swift in Sources */,
 				098D286B220CE41C00931318 /* AppDelegate.swift in Sources */,
+				0901CBEB22305A4500CD508E /* HiScoreScene.swift in Sources */,
 				099596782216284700DBBFA6 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

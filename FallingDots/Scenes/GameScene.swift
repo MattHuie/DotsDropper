@@ -105,7 +105,7 @@ class GameScene: SKScene {
     }
     
     func setupPhysics() {
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: Double(fallingSpeed)) // manipulates how fast the ball drops based on gravity
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: Double(-20)) // manipulates how fast the ball drops based on gravity
         physicsWorld.contactDelegate = self
     }
     
