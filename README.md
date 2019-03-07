@@ -13,8 +13,15 @@ Users can:
   2. View the latest highscores for each level achieved by the user.
   3. Read a tutorial on the rules of the game.
 
-
 ## Requirements
 - iOS 8.0+ / Mac OS X 10.11+ 
 - Xcode 10.0+
 - Swift 4.0+
+
+## Future Implementations
+- When selecting medium difficulty, two colored balls will drop.
+- When selecting hard difficulty, three colored balls will drop.
+- Settings Menu
+  - Change background music
+  - Reset highscores
+- Integration to Game Center.
