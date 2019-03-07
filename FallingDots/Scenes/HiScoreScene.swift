@@ -50,7 +50,7 @@ class HiScoreScene: SKScene {
         hardScoreLabel.position = CGPoint(x: frame.midX, y: frame.midY - hardScoreLabel.frame.size.height*2.5)
         addChild(hardScoreLabel)
         
-        menuLabel.fontName = "MarkerFelt-Wide"
+        menuLabel.fontName = "MarkerFelt-Thin"
         menuLabel.fontSize = 25.0
         menuLabel.fontColor = .white
         menuLabel.position = CGPoint(x: frame.midX, y: frame.midY - hardScoreLabel.frame.size.height*8)

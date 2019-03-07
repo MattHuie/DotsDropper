@@ -8,9 +8,11 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 class GameViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let view = self.view as! SKView? {
@@ -18,8 +20,8 @@ class GameViewController: UIViewController {
             scene.scaleMode = .aspectFill
             view.presentScene(scene)
             view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
+            
+            
         }
         
    

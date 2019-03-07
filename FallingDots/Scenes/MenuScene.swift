@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import UIKit
 
 class MenuScene: SKScene {
 
@@ -87,6 +88,7 @@ class MenuScene: SKScene {
             } else if tutorialLabel.contains(location) {
                 let tutorialScene = TutorialScene(size: view!.bounds.size)
                 view!.presentScene(tutorialScene)
+               
             }
             
         }

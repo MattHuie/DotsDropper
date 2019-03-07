@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0901CBEB22305A4500CD508E /* HiScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901CBEA22305A4500CD508E /* HiScoreScene.swift */; };
 		0901CBED22305A5300CD508E /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901CBEC22305A5300CD508E /* TutorialScene.swift */; };
+		0901CBF32230E43F00CD508E /* Mining by Moonlight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0901CBF22230E43F00CD508E /* Mining by Moonlight.mp3 */; };
+		0901CBF62230E4A700CD508E /* Ka-Ching.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0901CBF52230E4A700CD508E /* Ka-Ching.wav */; };
 		090568CD22129506005B4E92 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090568CC22129506005B4E92 /* MenuScene.swift */; };
 		098D286B220CE41C00931318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D286A220CE41C00931318 /* AppDelegate.swift */; };
 		098D2871220CE41C00931318 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D2870220CE41C00931318 /* GameScene.swift */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		0901CBEA22305A4500CD508E /* HiScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiScoreScene.swift; sourceTree = "<group>"; };
 		0901CBEC22305A5300CD508E /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		0901CBF22230E43F00CD508E /* Mining by Moonlight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mining by Moonlight.mp3"; sourceTree = "<group>"; };
+		0901CBF52230E4A700CD508E /* Ka-Ching.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Ka-Ching.wav"; sourceTree = "<group>"; };
 		090568CC22129506005B4E92 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		098D2867220CE41C00931318 /* FallingDots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingDots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		098D286A220CE41C00931318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0901CBF42230E44400CD508E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				0901CBF22230E43F00CD508E /* Mining by Moonlight.mp3 */,
+				0901CBF52230E4A700CD508E /* Ka-Ching.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		090568C8221293CD005B4E92 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				090568C8221293CD005B4E92 /* Scenes */,
+				0901CBF42230E44400CD508E /* Sounds */,
 				090568C9221293D7005B4E92 /* Controllers */,
 				090568CB22129406005B4E92 /* Template */,
 				090568CA221293F8005B4E92 /* Assets */,
@@ -170,8 +184,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				098D2876220CE41C00931318 /* Main.storyboard in Resources */,
+				0901CBF62230E4A700CD508E /* Ka-Ching.wav in Resources */,
 				098D2878220CE41E00931318 /* Assets.xcassets in Resources */,
 				098D287B220CE41E00931318 /* LaunchScreen.storyboard in Resources */,
+				0901CBF32230E43F00CD508E /* Mining by Moonlight.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

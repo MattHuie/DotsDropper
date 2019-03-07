@@ -34,6 +34,8 @@ class GameScene: SKScene {
     var fallingSpeed = Int()
     
     override func didMove(to view: SKView) {
+        let backgroundSound = SKAudioNode(fileNamed: "Mining by Moonlight.mp3")
+        self.addChild(backgroundSound)
         layoutScene()
         setupPhysics()
     }
@@ -105,7 +107,7 @@ class GameScene: SKScene {
     }
     
     func setupPhysics() {
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: Double(-20)) // manipulates how fast the ball drops based on gravity
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: Double(fallingSpeed)) // manipulates how fast the ball drops based on gravity
         physicsWorld.contactDelegate = self
     }
     
@@ -200,7 +202,7 @@ extension GameScene: SKPhysicsContactDelegate {
             print("There was Contact!")
             if let ball = contact.bodyA.node?.name == "ball" ? contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as? SKSpriteNode {
                 if ball.color == colorBar.color {
-                    // run(SKAction.playSoundFileNamed("", waitForCompletion: false)) // add soundfile above info.plist
+                     run(SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false)) // add soundfile above info.plist
                     
                     ball.run(SKAction.fadeIn(withDuration: 0.25), completion: {
                         ball.removeFromParent()
