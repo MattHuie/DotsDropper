@@ -11,6 +11,7 @@
 		0901CBED22305A5300CD508E /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901CBEC22305A5300CD508E /* TutorialScene.swift */; };
 		0901CBF32230E43F00CD508E /* Mining by Moonlight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0901CBF22230E43F00CD508E /* Mining by Moonlight.mp3 */; };
 		0901CBF62230E4A700CD508E /* Ka-Ching.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0901CBF52230E4A700CD508E /* Ka-Ching.wav */; };
+		0901CBF82231888E00CD508E /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901CBF72231888E00CD508E /* GameOverScene.swift */; };
 		090568CD22129506005B4E92 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090568CC22129506005B4E92 /* MenuScene.swift */; };
 		098D286B220CE41C00931318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D286A220CE41C00931318 /* AppDelegate.swift */; };
 		098D2871220CE41C00931318 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D2870220CE41C00931318 /* GameScene.swift */; };
@@ -26,6 +27,7 @@
 		0901CBEC22305A5300CD508E /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		0901CBF22230E43F00CD508E /* Mining by Moonlight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mining by Moonlight.mp3"; sourceTree = "<group>"; };
 		0901CBF52230E4A700CD508E /* Ka-Ching.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Ka-Ching.wav"; sourceTree = "<group>"; };
+		0901CBF72231888E00CD508E /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		090568CC22129506005B4E92 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		098D2867220CE41C00931318 /* FallingDots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingDots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		098D286A220CE41C00931318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				098D2870220CE41C00931318 /* GameScene.swift */,
 				0901CBEA22305A4500CD508E /* HiScoreScene.swift */,
 				0901CBEC22305A5300CD508E /* TutorialScene.swift */,
+				0901CBF72231888E00CD508E /* GameOverScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				098D2871220CE41C00931318 /* GameScene.swift in Sources */,
 				090568CD22129506005B4E92 /* MenuScene.swift in Sources */,
+				0901CBF82231888E00CD508E /* GameOverScene.swift in Sources */,
 				098D2873220CE41C00931318 /* GameViewController.swift in Sources */,
 				0901CBED22305A5300CD508E /* TutorialScene.swift in Sources */,
 				098D286B220CE41C00931318 /* AppDelegate.swift in Sources */,

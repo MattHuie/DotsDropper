@@ -63,8 +63,8 @@ class TutorialScene: SKScene {
         lineOne.fontColor = .white
         lineOne.lineBreakMode = NSLineBreakMode.byWordWrapping
         lineOne.numberOfLines = 0
-        lineOne.preferredMaxLayoutWidth = 450
-        lineOne.position = CGPoint(x: frame.midX, y: frame.midY + titleLabel.frame.size.height*5.1)
+        lineOne.preferredMaxLayoutWidth = 400
+        lineOne.position = CGPoint(x: frame.midX, y: frame.midY + titleLabel.frame.size.height*4.8)
         addChild(lineOne)
         
         barOne.name = "ColorBar"
@@ -103,8 +103,8 @@ class TutorialScene: SKScene {
         lineTwo.fontColor = .white
         lineTwo.lineBreakMode = NSLineBreakMode.byWordWrapping
         lineTwo.numberOfLines = 0
-        lineTwo.preferredMaxLayoutWidth = 400
-        lineTwo.position = CGPoint(x: frame.midX, y: frame.midY - titleLabel.frame.size.height*1.5)
+        lineTwo.preferredMaxLayoutWidth = 350
+        lineTwo.position = CGPoint(x: frame.midX, y: frame.midY - titleLabel.frame.size.height*2.5)
         addChild(lineTwo)
         
         ballOne.position = CGPoint(x: frame.midX, y: frame.midY - titleLabel.frame.size.height*3)
@@ -122,13 +122,13 @@ class TutorialScene: SKScene {
         lineThree.fontColor = .white
         lineThree.lineBreakMode = NSLineBreakMode.byWordWrapping
         lineThree.numberOfLines = 0
-        lineThree.preferredMaxLayoutWidth = 400
-        lineThree.position = CGPoint(x: frame.midX, y: frame.midY - titleLabel.frame.size.height*9)
+        lineThree.preferredMaxLayoutWidth = 350
+        lineThree.position = CGPoint(x: frame.midX, y: frame.midY - titleLabel.frame.size.height*8.5)
         addChild(lineThree)
         
         menuButton.fontName = "MarkerFelt-Thin"
         menuButton.fontSize = 25.0
-        menuButton.position = CGPoint(x: frame.midX, y: frame.minY + titleLabel.frame.size.height*2)
+        menuButton.position = CGPoint(x: frame.midX, y: frame.minY + titleLabel.frame.size.height)
         animate(label: menuButton)
         addChild(menuButton)
     }

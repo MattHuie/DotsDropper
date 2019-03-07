@@ -12,9 +12,9 @@ import SpriteKit
 class HiScoreScene: SKScene {
 
     let titleLabel = SKLabelNode(text: "Hi-Scores")
-    let easyScoreLabel = SKLabelNode(text: "Easy: 0")
-    let mediumScoreLabel = SKLabelNode(text: "Medium: 0")
-    let hardScoreLabel = SKLabelNode(text: "Hard: 0")
+    let easyScoreLabel = SKLabelNode(text: "Easy: " + "\(UserDefaults.standard.integer(forKey: "EasyHighscore"))")
+    let mediumScoreLabel = SKLabelNode(text: "Medium: " + "\(UserDefaults.standard.integer(forKey: "MediumHighscore"))")
+    let hardScoreLabel = SKLabelNode(text: "Hard: " + "\(UserDefaults.standard.integer(forKey: "HardHighscore"))")
     let menuLabel = SKLabelNode(text: "Main Menu")
     
     

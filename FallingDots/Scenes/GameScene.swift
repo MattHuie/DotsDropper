@@ -27,26 +27,31 @@ class GameScene: SKScene {
     let redButton = SKSpriteNode()
     let seperatorLine = SKSpriteNode()
     let bottomLine = SKSpriteNode()
+    let countDownLabel = SKLabelNode()
+    let scoreLabel = SKLabelNode(text: "Score: 0")
     let pauseButton = SKSpriteNode(imageNamed: "pauseIcon")
-
+    
     var colorSwitch: SKSpriteNode!
     var currentColorIndex: Int?
+    var countdownTime = 4
+    var countdownTimer = Timer()
     var score = 0
     var fallingSpeed = Int()
+    var difficulty = String()
     
     override func didMove(to view: SKView) {
         let backgroundSound = SKAudioNode(fileNamed: "Mining by Moonlight.mp3")
         self.addChild(backgroundSound)
+        countdownTime = 4
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
         layoutScene()
         setupPhysics()
+        
     }
     
     func layoutScene() {
         backgroundColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
-        spawnBallOne()
-        //spawnBallTwo()
-        //spawnBallThree()
-        
+       
         colorBar.name = "ColorBar"
         colorBar.color = .lightGray
         colorBar.size = CGSize(width: frame.width, height: frame.height/8)
@@ -56,6 +61,11 @@ class GameScene: SKScene {
         colorBar.physicsBody?.categoryBitMask = PhysicsCategories.barCategory
         colorBar.physicsBody?.isDynamic = false
         addChild(colorBar)
+        
+        countDownLabel.fontName = "MarkerFelt-Wide"
+        countDownLabel.fontSize = 50.0
+        countDownLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(countDownLabel)
         
         blueButton.name = "Blue"
         blueButton.color = UIColor(red: 0.54, green: 0.54, blue: 0.85, alpha: 1.0)
@@ -99,6 +109,12 @@ class GameScene: SKScene {
         bottomLine.zPosition = ZPositions.line
         addChild(bottomLine)
         
+        scoreLabel.fontName = "MarkerFelt-Thin"
+        scoreLabel.fontSize = 20.0
+        scoreLabel.position = CGPoint(x: frame.minX + frame.width/7, y: frame.maxY - frame.width/5)
+        scoreLabel.zPosition = CGFloat(ZPositions.label)
+        addChild(scoreLabel)
+        
         pauseButton.name = "Pause"
         pauseButton.size = CGSize(width: frame.size.width/10, height: frame.size.width/10)
         pauseButton.position = CGPoint(x: frame.midX + frame.width/2.5, y: frame.maxY - frame.width/5)
@@ -127,43 +143,34 @@ class GameScene: SKScene {
         addChild(ball)
 
     }
-    
-    func spawnBallTwo() {
-        
-        let ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColors.colors[currentColorIndex!], size: CGSize(width: 30.0, height: 30.0))
-        ball.colorBlendFactor = 1.0
-        ball.name = "ball2"
-        ball.position = CGPoint(x: frame.midX / 2, y: frame.maxY)
-        ball.zPosition = ZPositions.ball
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
-        ball.physicsBody?.categoryBitMask = PhysicsCategories.ballCategory
-        ball.physicsBody?.contactTestBitMask = PhysicsCategories.barCategory
-        ball.physicsBody?.collisionBitMask = PhysicsCategories.none
-        addChild(ball)
-        
+
+    @objc func countdown() {
+        countdownTime -= 1
+        countDownLabel.text = String(countdownTime)
+        if countdownTime == 0 {
+            countDownLabel.text = "GO!"
+            countdownTimer.invalidate()
+            timeText()
+        }
     }
     
-    func spawnBallThree() {
-        
-        let ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColors.colors[currentColorIndex!], size: CGSize(width: 30.0, height: 30.0))
-        ball.colorBlendFactor = 1.0
-        ball.name = "ball3"
-        ball.position = CGPoint(x: frame.midX + (frame.midX / 2), y: frame.maxY)
-        ball.zPosition = ZPositions.ball
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
-        ball.physicsBody?.categoryBitMask = PhysicsCategories.ballCategory
-        ball.physicsBody?.contactTestBitMask = PhysicsCategories.barCategory
-        ball.physicsBody?.collisionBitMask = PhysicsCategories.none
-        addChild(ball)
-        
+    func timeText() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(changeTextEmpty), userInfo: nil, repeats: false)
     }
-    
-    func spawnAllBalls() {
+    @objc func changeTextEmpty() {
+        countDownLabel.text = ""
         spawnBallOne()
-        //spawnBallTwo()
-        //spawnBallThree()
     }
     
+    func updateScoreLabel() {
+        scoreLabel.text = "Score: \(score)"
+    }
+    
+    func changeFallingSpeed() {
+        if score % 10 == 0 {
+            fallingSpeed -= 1
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -184,31 +191,46 @@ class GameScene: SKScene {
                 }
             }
         }
-        
     }
 
     func gameOver() {
-        let menuScene = MenuScene(size: view!.bounds.size)
-        view!.presentScene(menuScene)
+        
+        switch difficulty {
+        case "easy":
+            if score > UserDefaults.standard.integer(forKey: "EasyHighscore") {
+                UserDefaults.standard.set(score, forKey: "EasyHighscore")
+            }
+        case "medium":
+            if score > UserDefaults.standard.integer(forKey: "MediumHighscore") {
+                UserDefaults.standard.set(score, forKey: "MediumHighscore")
+            }
+        case "hard":
+            if score > UserDefaults.standard.integer(forKey: "HardHighscore") {
+                UserDefaults.standard.set(score, forKey: "HardHighscore")
+            }
+        default:
+            break
+        }
+        
+        let gameOverScene = GameOverScene(size: view!.bounds.size)
+        view!.presentScene(gameOverScene)
     }
-   
 }
 
 extension GameScene: SKPhysicsContactDelegate {
-    
     func didBegin(_ contact: SKPhysicsContact) {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         if contactMask == PhysicsCategories.ballCategory | PhysicsCategories.barCategory {
-            print("There was Contact!")
             if let ball = contact.bodyA.node?.name == "ball" ? contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as? SKSpriteNode {
                 if ball.color == colorBar.color {
-                    run(SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false)) // add soundfile above info.plist
+                    run(SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false))
+                    score += 1
+                    updateScoreLabel()
+                    changeFallingSpeed()
                     ball.run(SKAction.fadeIn(withDuration: 0.25), completion: {
                         ball.removeFromParent()
-                        self.spawnAllBalls()
+                        self.spawnBallOne()
                     })
-                } else if score % 10 == 0 {
-                    fallingSpeed += Int(0.01)
                 } else {
                     gameOver()
                 }
