@@ -81,6 +81,15 @@ class MenuScene: SKScene {
             let location = touch.location(in: self)
             if easyLabel.contains(location) {
                 let gameScene = GameScene(size: view!.bounds.size)
+                gameScene.fallingSpeed = Int.random(in: -10 ... -3)
+                view!.presentScene(gameScene)
+            } else if mediumLabel.contains(location) {
+                let gameScene = GameScene(size: view!.bounds.size)
+                gameScene.fallingSpeed = Int.random(in: -10 ... -5)
+                view!.presentScene(gameScene)
+            } else if hardLabel.contains(location) {
+                let gameScene = GameScene(size: view!.bounds.size)
+                gameScene.fallingSpeed = Int.random(in: -10 ... -7)
                 view!.presentScene(gameScene)
             } else if hiScoreLabel.contains(location) {
                 let hiScoreScene = HiScoreScene(size: view!.bounds.size)

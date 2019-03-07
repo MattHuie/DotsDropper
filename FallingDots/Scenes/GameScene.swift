@@ -31,6 +31,7 @@ class GameScene: SKScene {
 
     var colorSwitch: SKSpriteNode!
     var currentColorIndex: Int?
+    var score = 0
     var fallingSpeed = Int()
     
     override func didMove(to view: SKView) {
@@ -115,7 +116,6 @@ class GameScene: SKScene {
         currentColorIndex = Int(arc4random_uniform(UInt32(4)))
         
         let ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColors.colors[currentColorIndex!], size: CGSize(width: 30.0, height: 30.0))
-        fallingSpeed = Int.random(in: -10 ... -3)
         ball.colorBlendFactor = 1.0
         ball.name = "ball"
         ball.position = CGPoint(x: frame.midX, y: frame.maxY)
@@ -202,12 +202,13 @@ extension GameScene: SKPhysicsContactDelegate {
             print("There was Contact!")
             if let ball = contact.bodyA.node?.name == "ball" ? contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as? SKSpriteNode {
                 if ball.color == colorBar.color {
-                     run(SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false)) // add soundfile above info.plist
-                    
+                    run(SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false)) // add soundfile above info.plist
                     ball.run(SKAction.fadeIn(withDuration: 0.25), completion: {
                         ball.removeFromParent()
                         self.spawnAllBalls()
                     })
+                } else if score % 10 == 0 {
+                    fallingSpeed += Int(0.01)
                 } else {
                     gameOver()
                 }
