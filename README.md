@@ -7,7 +7,7 @@ FallingDots is a single player game that has a randomly generated colored ball f
 ### Gameplay
 In this gif, you see some gameplay on easy mode.
 
-![fallingdotsgif-overview](https://user-images.githubusercontent.com/43770537/53982844-eaa5d080-40e3-11e9-8847-c099c478abb5.gif)
+![gameplayGif](https://user-images.githubusercontent.com/43770537/54216776-aab66300-44c0-11e9-8c35-3a2581cf61bd.gif)
 
 ### Highscores
 Users are able to see their highscores for each difficulty on the Main Menu screen.
