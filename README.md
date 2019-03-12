@@ -12,7 +12,7 @@ In this gif, you see some gameplay on easy mode.
 ### Highscores
 Users are able to see their highscores for each difficulty on the Main Menu screen.
 
-![fallingdotsgif-highscores](https://user-images.githubusercontent.com/43770537/53982978-39536a80-40e4-11e9-8723-34556744f854.gif)
+![highscoresGif](https://user-images.githubusercontent.com/43770537/54216887-e18c7900-44c0-11e9-8bad-4ef9c714c603.gif)
 
 ### How To Play
 Users at anytime visit the How To Play button on the Main Menu to learn how to play the game.
