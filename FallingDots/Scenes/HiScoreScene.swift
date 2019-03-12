@@ -20,6 +20,8 @@ class HiScoreScene: SKScene {
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+        let backgroundSound = SKAudioNode(fileNamed: "Mining by Moonlight.mp3")
+        self.addChild(backgroundSound)
         addMenuUI()
         
     }

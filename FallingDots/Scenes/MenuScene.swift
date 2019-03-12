@@ -11,6 +11,7 @@ import UIKit
 
 class MenuScene: SKScene {
 
+    let background = SKSpriteNode(imageNamed: "DotsBackgroundCrop3")
     let titleLabel = SKLabelNode(text: "Falling Dots")
     let easyLabel = SKLabelNode(text: "Easy")
     let mediumLabel = SKLabelNode(text: "Medium")
@@ -20,21 +21,30 @@ class MenuScene: SKScene {
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
+        let backgroundSound = SKAudioNode(fileNamed: "Mining by Moonlight.mp3")
+        self.addChild(backgroundSound)
         addMenuUI()
 
     }
     
     func addMenuUI() {
         
+        background.size = CGSize(width: frame.size.width, height: frame.size.height)
+        background.zPosition = 0
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        addChild(background)
+        
         titleLabel.fontName = "MarkerFelt-Wide"
         titleLabel.fontSize = 50.0
         titleLabel.fontColor = .white
+        titleLabel.zPosition = 1
         titleLabel.position = CGPoint(x: frame.midX, y: frame.midY + titleLabel.frame.size.height*5)
         addChild(titleLabel)
         
         easyLabel.fontName = "MarkerFelt-Thin"
         easyLabel.fontSize = 40.0
         easyLabel.fontColor = .white
+        easyLabel.zPosition = 1
         easyLabel.position = CGPoint(x: frame.midX, y: frame.midY + easyLabel.frame.size.height)
         addChild(easyLabel)
         animate(label: easyLabel)
@@ -42,6 +52,7 @@ class MenuScene: SKScene {
         mediumLabel.fontName = "MarkerFelt-Thin"
         mediumLabel.fontSize = 40.0
         mediumLabel.fontColor = .white
+        mediumLabel.zPosition = 1
         mediumLabel.position = CGPoint(x: frame.midX, y: frame.midY - mediumLabel.frame.size.height/2)
         addChild(mediumLabel)
         animate(label: mediumLabel)
@@ -49,6 +60,7 @@ class MenuScene: SKScene {
         hardLabel.fontName = "MarkerFelt-Thin"
         hardLabel.fontSize = 40.0
         hardLabel.fontColor = .white
+        hardLabel.zPosition = 1
         hardLabel.position = CGPoint(x: frame.midX, y: frame.midY - hardLabel.frame.size.height*2.1)
         addChild(hardLabel)
         animate(label: hardLabel)
@@ -56,6 +68,7 @@ class MenuScene: SKScene {
         hiScoreLabel.fontName = "MarkerFelt-Thin"
         hiScoreLabel.fontSize = 30.0
         hiScoreLabel.fontColor = .white
+        hiScoreLabel.zPosition = 1
         hiScoreLabel.position = CGPoint(x: frame.midX, y: frame.midY - hiScoreLabel.frame.size.height*8)
         addChild(hiScoreLabel)
         animate(label: hiScoreLabel)
@@ -63,6 +76,7 @@ class MenuScene: SKScene {
         tutorialLabel.fontName = "MarkerFelt-Thin"
         tutorialLabel.fontSize = 30.0
         tutorialLabel.fontColor = .white
+        tutorialLabel.zPosition = 1
         tutorialLabel.position = CGPoint(x: frame.midX, y: frame.midY - tutorialLabel.frame.size.height*9.5)
         addChild(tutorialLabel)
         animate(label: tutorialLabel)
