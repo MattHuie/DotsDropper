@@ -33,6 +33,7 @@ Users can:
 ## Future Implementations
 - When selecting medium difficulty, two colored balls will drop.
 - When selecting hard difficulty, three colored balls will drop.
+- Animations when the ball hits the bar.
 - Settings Menu
   - Change background music
   - Reset highscores
