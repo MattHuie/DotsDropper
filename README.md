@@ -17,7 +17,7 @@ Users are able to see their highscores for each difficulty on the Main Menu scre
 ### How To Play
 Users at anytime visit the How To Play button on the Main Menu to learn how to play the game.
 
-![fallingdotsgif-howtoplay](https://user-images.githubusercontent.com/43770537/53983021-512aee80-40e4-11e9-98d8-58cba405ee29.gif)
+![tutorialGif](https://user-images.githubusercontent.com/43770537/54216913-f406b280-44c0-11e9-8413-cc5c56eb6314.gif)
 
 ## Features
 Users can:
