@@ -12,7 +12,7 @@ import UIKit
 class MenuScene: SKScene {
 
     let background = SKSpriteNode(imageNamed: "DotsBackgroundCrop3")
-    let titleLabel = SKLabelNode(text: "Falling Dots")
+    let titleLabel = SKLabelNode(text: "Dots Dropper")
     let easyLabel = SKLabelNode(text: "Easy")
     let mediumLabel = SKLabelNode(text: "Medium")
     let hardLabel = SKLabelNode(text: "Hard")

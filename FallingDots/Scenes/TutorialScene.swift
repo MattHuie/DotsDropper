@@ -11,7 +11,7 @@ import SpriteKit
 
 class TutorialScene: SKScene {
 
-    let titleLabel = SKLabelNode(text: "Welcome to Falling Dots")
+    let titleLabel = SKLabelNode(text: "Welcome to Dots Dropper")
     let blueBall = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: UIColor(red: 0.54, green: 0.54, blue: 0.85, alpha: 1.0), size: CGSize(width: 30.0, height: 30.0))
     let greenBall = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: UIColor(red: 0.16, green: 0.84, blue: 0.48, alpha: 1.0), size: CGSize(width: 30.0, height: 30.0))
     let yellowBall = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: UIColor(red: 1.00, green: 1.00, blue: 0.40, alpha: 1.0), size: CGSize(width: 30.0, height: 30.0))
